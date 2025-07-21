@@ -1,28 +1,10 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="refresh" content="0; url=https://www.instagram.com/werdann_/">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>@werdann_</title>
-		<meta property="og:title" content="@werdann_ on Instagram">
-		<meta property="og:description" content="Instagram profile @werdann_">
-		<meta property="og:image" content="imgs/Instagram_icon.png">
-		<meta property="og:url" content="https://www.instagram.com/werdann_/">
-	</head>
-	<body>
-		<p>Redirecting to Instagram...</p>
-	</body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>@werdann_</title>
-	<meta name="title" content="@werdann_" />
-	<meta name="description" content="Follow me on Instagram: @werdann_" />
+	<meta name="title" content="@werdann_">
+	<meta name="description" content="Follow me on Instagram: @werdann_">
 
 
 	<meta property="og:title" content="@werdann_">
@@ -43,35 +25,20 @@
 	<style>
 		body {
 			background-color: #0e0e0e;
-			font-family: Verdana, Geneva, Tahoma, sans-serif;
-			text-align: center;
-			margin-top: 100px;
-			color: rgba(255, 255, 255, 0.6);
-		}
-		img {
-			width: 100px;
-		}
-		a{
-			color: rgb(136, 35, 232);
-			text-decoration: none;
 		}
 	</style>
 </head>
 <body>
-	<h1>Redirecting... <a href="https://instagram.com/werdann_">@werdann_</a></h1>
-	<img src="imgs/Instagram_icon.png" alt="Instagram icon">
-
 	<script>
-		const ref = document.referrer
 		const params = new URLSearchParams(window.location.search)
+		const isTogglingRedirect = JSON.parse(params.get("redirect"))
 
-		if (params.get('source') === 'discord' || ref.includes('discord.com')) {
-			console.log('Definitely came from Discord!')
-		}else{
-			console.log(params.get("source"), params)
+		if(params.get("redirect")){
+			localStorage.setItem("redirect", isTogglingRedirect)
 		}
-		alert("aaaa")
-	</script>
 
+		const isRedirectOn = JSON.parse(localStorage.getItem("redirect"))
+		if(isRedirectOn){ document.head.innerHTML += `<meta http-equiv="refresh" content="1; url=https://instagram.com/werdann_">` }
+	</script>
 </body>
 </html>
