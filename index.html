@@ -31,13 +31,13 @@
 <body>
 	<script>
 		const params = new URLSearchParams(window.location.search)
+		let isRedirectOn = JSON.parse(localStorage.getItem("redirect"))
 		const isTogglingRedirect = JSON.parse(params.get("redirect"))
 
 		if(params.get("redirect")){
 			localStorage.setItem("redirect", isTogglingRedirect)
-		}
+		}else{ isRedirectOn = true }
 
-		const isRedirectOn = JSON.parse(localStorage.getItem("redirect"))
 		if(isRedirectOn){ document.head.innerHTML += `<meta http-equiv="refresh" content="1; url=https://instagram.com/werdann_">` }
 	</script>
 </body>
